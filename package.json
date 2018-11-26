@@ -13,8 +13,10 @@
     "build": "npm run clean && mkdir dist && babel src -D -d dist"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "github-markdown-css": "^2.4.1",
     "jsonwebtoken": "^7.1.9",
+    "knex": "^0.15.2",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.0.0",
     "koa-convert": "^1.2.0",
@@ -27,8 +29,10 @@
     "marked": "^0.3.6",
     "md5": "^2.2.1",
     "mini-logger": "^1.1.1",
-    "mongoose": "^4.7.0",
+    "mysql": "^2.16.0",
+    "pg-hstore": "^2.3.2",
     "rimraf": "^2.6.1",
+    "sequelize": "^4.41.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

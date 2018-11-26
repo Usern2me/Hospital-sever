@@ -7,20 +7,17 @@ const root = path.resolve(serverRoot, '../')
 const staticDir = path.join(root, 'static')
 let config = {
   app: {
-    name: 'ocean',
-    port: 3000
+    name: 'hospital',
+    port: 3307
   },
   debug: false,
   env: 'production',
-  mongoConfig: {
-    url: 'mongodb://localhost:27017/ocean',
+  database: {
+    url: 'mysql://root:root@localhost:3306/hospital',
     opts: {
-      user: '',
-      pass: ''
+      user: 'root',
+      pass: '12345'
     }
-  },
-  'jwt': {
-    'cert': 'ocean'
   },
   dir: {
     root,
@@ -31,8 +28,8 @@ let config = {
     upload: path.join(serverRoot, 'resource', 'upload')
   }
 }
-config = merge(config, process.env.NODE_ENV === 'development'
-  ? dev
-  : require('./private.js'))
+config = merge(config, process.env.NODE_ENV === 'development' ?
+  dev :
+  require('./private.js'))
 
 export default config

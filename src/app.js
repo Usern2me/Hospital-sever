@@ -7,19 +7,12 @@ import koaStatic from 'koa-static'
 import cors from 'koa-cors'
 import path from 'path'
 import router from './router'
-import mongoose from 'mongoose'
 
 import config from './config'
 import respondFormatter from './middlewares/respondFormatter'
 
 const app = new Koa()
-
-mongoose.Promise = global.Promise
-mongoose.connect(config.mongoConfig.url, {
-  useMongoClient: true
-})
-
-app.keys = ['ocean-domon']
+app.keys = ['hospital-cookie-auth']
 app.context.config = config
 
 app.use(cors({
@@ -28,12 +21,12 @@ app.use(cors({
   methods: 'GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE',
   headers: 'Content-Type, Accept, Authorization'
 }))
-.use(logger())
-.use(bodyParser())
-.use(convert(session(app)))
-.use(koaStatic(path.join(__dirname, '/public')))
-.use(respondFormatter('^/api'))   // 仅格式化api开头的地址输出
-.use(router.routes())
-.use(router.allowedMethods())
+  .use(logger())
+  .use(bodyParser())
+  .use(convert(session(app)))
+  .use(koaStatic(path.join(__dirname, '/public')))
+  .use(respondFormatter('^/')) // 格式化输出所有以/开头的
+  .use(router.routes())
+  .use(router.allowedMethods()) // 可以使用get post方法
 
 export default app

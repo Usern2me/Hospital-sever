@@ -1,14 +1,11 @@
 export default {
   env: 'development',
   debug: true,
-  mongoConfig: {
-    url: 'mongodb://localhost:27017/ocean',
+  database: {
+    url: 'mysql://root:root@localhost:3306/hospital',
     opts: {
-      user: '',
-      pass: ''
+      user: 'root',
+      pass: '12345'
     }
-  },
-  'jwt': {
-    'cert': 'ocean'
   }
 }
