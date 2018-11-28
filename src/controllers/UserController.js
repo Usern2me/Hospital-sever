@@ -1,23 +1,25 @@
 import ApiError from '../error/ApiError'
 import ApiErrorNames from '../error/ApiErrorNames'
 import User from '../models/user'
+const Dao = require('../middlewares/common-dao')
 class UserController {
-  async getUsers (ctx) {
-    const list = await User
-    .findAll().exec()
-    ctx.body = { list }
+  async getUsers(ctx) {
+    const list = await Dao.findAll(User)
+    ctx.body = {
+      list
+    }
+    return true
   }
   async getUser(ctx) {
-    if (Number(ctx.params.id) !== 1) {
-      throw new ApiError(ApiErrorNames.USER_NOT_EXIST)
-    }
     const res = User.findOne()
       .then(res => {
-      //
+        console.log('res', res)
       }).catch(err => {
-        console.log('user->getUser->error', err)
+        throw new ApiError(ApiErrorNames.USER_NOT_EXIST)
       })
-    ctx.body = {res}
+    ctx.body = {
+      res
+    }
   }
 }
 

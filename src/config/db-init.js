@@ -1,26 +1,38 @@
 const Sequelize = require('sequelize')
 const config = require('./index')
 
-const seq = new Sequelize(
-    config.app.name,
-    config.database.opts.user,
-    config.database.opts.pass, {
-      host: config.database.url,
-      dialect: 'mysql',
-      operatorsAliases: false,
+// const seq = new Sequelize(
+//   config.name,
+//   config.user,
+//   config.pass, {
+//     host: config.host,
+//     port: config.port,
+//     dialect: 'mysql',
+//     operatorsAliases: false,
+//     insecureAuth: true,
 
-      pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
+//     pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
 
-      }
-    })
-// Sequelize.authenticate().then(() => {
-//   console.log('11')
-// }).catch(err => {
-//   console.log('22', err)
+//     }
 //   })
+
+const seq = new Sequelize('hospital', 'root', '123456', {
+  host: 'localhost',
+  dialect: 'mysql',
+  operatorsAliases: false,
+  insecureAuth: true,
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+
+  }
+})
 
 module.exports = seq
