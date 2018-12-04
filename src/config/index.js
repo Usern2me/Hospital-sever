@@ -1,3 +1,6 @@
+/**
+ * 连接数据库的配置文件
+ */
 import path from 'path'
 
 const serverRoot = path.dirname(__dirname)
@@ -7,7 +10,6 @@ let config = {
   name: 'hospital',
   debug: false,
   host: 'localhost',
-  port: 3306,
   env: 'dev',
   user: 'root',
   pass: '123456',
@@ -21,4 +23,4 @@ let config = {
   }
 }
 
-export default config
+module.exports = config

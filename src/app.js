@@ -22,7 +22,7 @@ app.use(cors({
   headers: 'Content-Type, Accept, Authorization'
 }))
   .use(logger())
-  .use(bodyParser())
+  .use(bodyParser()) // 解析body的参数的中间件
   .use(convert(session(app)))
   .use(koaStatic(path.join(__dirname, '/public')))
   .use(respondFormatter('^/')) // 格式化输出所有以/开头的

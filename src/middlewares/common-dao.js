@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /**
- * 统一处理跟数据库的方法
+ * 统一处理处理数据库的方法
  */
 function findOne(model, condition, attributes = []) {
   let query = {

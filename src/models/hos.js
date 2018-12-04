@@ -1,3 +1,7 @@
+/**
+ * 住院表
+ * 和病历表独立
+ */
 import mysqlConn from '../config/db-init'
 import sequelize from 'sequelize'
 
