@@ -23,6 +23,7 @@ const hos = mysqlConn.define('hos', {
     type: sequelize.STRING(15),
     allowNull: false
   },
+  phone: sequelize.STRING(45),
   work: sequelize.STRING(45),
   hometown: sequelize.STRING(45),
   firstResult: sequelize.STRING(500),

@@ -22,10 +22,10 @@ const user = mysqlConn.define('user', {
     type: sequelize.STRING(15),
     allowNull: false
   },
-  // work: sequelize.STRING(45),
-  // email: sequelize.STRING(45),
-  // date: sequelize.DATE,
-  // type: sequelize.INTEGER(11)
+  work: sequelize.STRING(45),
+  email: sequelize.STRING(45),
+  date: sequelize.DATE,
+  type: sequelize.INTEGER(11)
 }
 , {
   timestamps: false

@@ -4,7 +4,8 @@ var ApiErrorNames = {
   USER_NOT_EXIST: 'userNotExist',
   ADD_USER_ERROR: 'addUserError',
   UPDATE_USER_ERROR: 'updateUserError',
-  DELETE_USER_ERROR: 'deleteUserError'
+  DELETE_USER_ERROR: 'deleteUserError',
+  HOS_NOT_EXIST: 'hosNotExist'
 }
 
 // API错误名称对应的错误信息
@@ -29,6 +30,10 @@ errorMap.set(ApiErrorNames.UPDATE_USER_ERROR, {
 errorMap.set(ApiErrorNames.DELETE_USER_ERROR, {
   code: 104,
   message: '删除用户失败'
+})
+errorMap.set(ApiErrorNames.HOS_NOT_EXIST, {
+  code: 105,
+  message: '住院用户不存在'
 })
 
 // 根据错误名称获取错误信息
