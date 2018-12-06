@@ -11,37 +11,44 @@ class UserController {
     }
     return true
   }
-  // get
-  async getUserByPhone(ctx) {
-    let phone_query = ctx.query
+  // get 用name查找
+  async getUser(ctx) {
+    let {
+      name
+    } = ctx.query
     await Dao.findOne(User, {
-      phone: phone_query
-    })
+        name: name
+      })
       .then(res => {
-        console.log('phone->res', res)
         ctx.body = res
       }).catch(() => {
         throw new ApiError(ApiErrorNames.USER_NOT_EXIST)
       })
     return true
   }
-  // post 这个传的参也有问题
+  // post
   async addUser(ctx) {
     let user_query = ctx.request.body
-    await Dao.create(User, user_query)
+    await Dao.findOrCreate(User, user_query)
       .then(() => {
-        ctx.body = true
-      }).catch(() => {
+        ctx.body = '1111111'
+      }).catch((err) => {
+        console.log('insert error->', err)
         throw new ApiError(ApiErrorNames.ADD_USER_ERROR)
       })
     return true
   }
-  // post 这个update方法传的参数有点问题
+  // post 输入id更新其他数据 ctx.body是后端返回的data值
   async updateUser(ctx) {
     let user_query = ctx.request.body
-    await Dao.update(User, user_query)
+    let {
+      id
+    } = user_query
+    await Dao.update(User, user_query, {
+        id: id
+      })
       .then(() => {
-        ctx.body = true
+        ctx.body = '6666'
       }).catch(() => {
         throw new ApiError(ApiErrorNames.UPDATE_USER_ERROR)
       })
@@ -49,10 +56,12 @@ class UserController {
   }
   // get 传用户的手机号
   async deleteUser(ctx) {
-    let user_query = ctx.query
+    let {
+      id: user_query
+    } = ctx.query
     await Dao.destroy(User, {
-      phone: user_query
-    })
+        id: user_query
+      })
       .then(() => {
         ctx.body = true
       }).catch(() => {

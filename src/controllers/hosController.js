@@ -25,5 +25,40 @@ class HosController {
             })
         return true
     }
+    // post
+    async addHos(ctx) {
+        let user_query = ctx.request.body
+        await Dao.findOrCreate(Hos, user_query)
+            .then(() => {
+                ctx.body = '112233'
+            }).catch((err) => {
+                console.log(err)
+                throw new ApiError(ApiErrorNames.ADD_HOS_ERROR)
+            })
+        return true
+    }
+    // post
+    async updateHos(ctx) {
+        let user_query = ctx.request.body
+        await Dao.update(Hos, user_query)
+            .then(() => {
+                ctx.body = true
+            }).catch(() => {
+                throw new ApiError(ApiErrorNames.UPDATE_HOS_ERROR)
+            })
+        return true
+    }
+    // get
+    async deleteHos(ctx) {
+        let user_query = ctx.query
+        await Dao.destroy(Hos, {
+                phone: user_query
+            })
+            .then(() => {
+                ctx.body = true
+            }).catch(() => {
+                throw new ApiError(ApiErrorNames.DELETE_HOS_ERROR)
+            })
+    }
 }
 module.exports = new HosController()

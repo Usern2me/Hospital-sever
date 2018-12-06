@@ -1,5 +1,6 @@
 #!/usr/local/bin/babel-node
+
 import server from './app'
-const PORT = server.context.config.app.port
+const PORT = 3000
 server.listen(PORT) // 监听端口
 console.log(`listening on port ${PORT}`)

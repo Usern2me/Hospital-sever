@@ -1,11 +1,16 @@
 // API错误名称
 var ApiErrorNames = {
   UNKNOW_ERROR: 'unknowError',
+  // user
   USER_NOT_EXIST: 'userNotExist',
   ADD_USER_ERROR: 'addUserError',
   UPDATE_USER_ERROR: 'updateUserError',
   DELETE_USER_ERROR: 'deleteUserError',
-  HOS_NOT_EXIST: 'hosNotExist'
+  // hos
+  HOS_NOT_EXIST: 'hosNotExist',
+  ADD_HOS_ERROR: 'addHosError',
+  UPDATE_HOS_ERROR: 'updateHosError',
+  DELETE_HOS_ERROR: 'deleteHosError'
 }
 
 // API错误名称对应的错误信息
@@ -34,6 +39,18 @@ errorMap.set(ApiErrorNames.DELETE_USER_ERROR, {
 errorMap.set(ApiErrorNames.HOS_NOT_EXIST, {
   code: 105,
   message: '住院用户不存在'
+})
+errorMap.set(ApiErrorNames.ADD_HOS_ERROR, {
+  code: 106,
+  message: '添加住院用户失败'
+})
+errorMap.set(ApiErrorNames.UPDATE_HOS_ERROR, {
+  code: 107,
+  message: '更新住院用户失败'
+})
+errorMap.set(ApiErrorNames.DELETE_HOS_ERROR, {
+  code: 108,
+  message: '删除住院用户失败'
 })
 
 // 根据错误名称获取错误信息
