@@ -2,6 +2,8 @@ import ApiError from '../error/ApiError'
 import ApiErrorNames from '../error/ApiErrorNames'
 import User from '../models/user'
 const Dao = require('../middlewares/common-dao')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 class UserController {
   // get
   async getUsers(ctx) {
@@ -16,8 +18,11 @@ class UserController {
     let {
       name
     } = ctx.query
-    await Dao.findOne(User, {
-        name: name
+    await Dao.findAll(User, {
+      name: {
+        // 模糊搜索 使用$like不行可能是因为和别的冲突了
+        [Op.like]: `%${name}%`
+        }
       })
       .then(res => {
         ctx.body = res
