@@ -25,11 +25,10 @@ const user = mysqlConn.define('user', {
   work: sequelize.STRING(45),
   email: sequelize.STRING(45),
   date: sequelize.DATE,
-  type: sequelize.INTEGER(11)
-}
-, {
+  type: sequelize.INTEGER(11),
+  department: sequelize.STRING(45)
+}, {
   timestamps: false
-}
-    )
+})
 
 export default user

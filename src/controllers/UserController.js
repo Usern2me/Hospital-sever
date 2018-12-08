@@ -19,14 +19,29 @@ class UserController {
       name
     } = ctx.query
     await Dao.findAll(User, {
-      name: {
-        // 模糊搜索 使用$like不行可能是因为和别的冲突了
-        [Op.like]: `%${name}%`
+        name: {
+          // 模糊搜索 使用$like不行可能是因为和别的冲突了
+          [Op.like]: `%${name}%`
         }
       })
       .then(res => {
         ctx.body = res
       }).catch(() => {
+        throw new ApiError(ApiErrorNames.USER_NOT_EXIST)
+      })
+    return true
+  }
+  // get 用id获取
+  async getUserById(ctx) {
+    let {
+      id
+    } = ctx.query
+    await Dao.findAll(User, {
+        id: id
+      })
+      .then(res => {
+        ctx.body = res
+      }).catch((err) => {
         throw new ApiError(ApiErrorNames.USER_NOT_EXIST)
       })
     return true
@@ -54,7 +69,8 @@ class UserController {
       })
       .then(() => {
         ctx.body = '6666'
-      }).catch(() => {
+      }).catch((err) => {
+        console.log(err)
         throw new ApiError(ApiErrorNames.UPDATE_USER_ERROR)
       })
     return true
