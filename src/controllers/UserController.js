@@ -48,12 +48,11 @@ class UserController {
   }
   // post
   async addUser(ctx) {
+    // 获取请求里的参数
     let user_query = ctx.request.body
     await Dao.findOrCreate(User, user_query)
       .then(() => {
-        ctx.body = '1111111'
       }).catch((err) => {
-        console.log('insert error->', err)
         throw new ApiError(ApiErrorNames.ADD_USER_ERROR)
       })
     return true
@@ -64,6 +63,9 @@ class UserController {
     let {
       id
     } = user_query
+    for (let i = 0; i < 5; i++){
+      console.log('aaaaaaaaaaaaaa职业：'+ user_query.work)
+    }
     await Dao.update(User, user_query, {
         id: id
       })

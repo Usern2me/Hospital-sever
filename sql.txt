@@ -1,0 +1,33 @@
+// 创建数据库的代码
+user表（相当于病历表）：
+CREATE TABLE `users` (
+  `id` varchar(45) NOT NULL DEFAULT '0000000',
+  `name` varchar(45) NOT NULL DEFAULT 'default name',
+  `age` int(11) NOT NULL DEFAULT '0',
+  `gender` varchar(10) NOT NULL DEFAULT 'male',
+  `work` varchar(200) DEFAULT 'work',
+  `email` varchar(45) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `type` int(11) DEFAULT '0',
+  `department` varchar(45) DEFAULT 'null',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='病历表';
+
+hos表（住院表）：
+CREATE TABLE `hos` (
+  `id` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL DEFAULT 'default name',
+  `age` int(11) NOT NULL DEFAULT '0',
+  `gender` varchar(15) NOT NULL DEFAULT 'male',
+  `work` varchar(45) DEFAULT NULL,
+  `hometown` varchar(45) DEFAULT NULL,
+  `firstResult` varchar(500) DEFAULT NULL,
+  `native` varchar(45) DEFAULT NULL,
+  `mainSick` varchar(2000) DEFAULT NULL,
+  `pastSick` varchar(2000) DEFAULT NULL,
+  `docName` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='住院表';
+
