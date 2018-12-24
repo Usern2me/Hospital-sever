@@ -11,8 +11,8 @@ let config = {
   debug: false,
   host: 'localhost',
   env: 'dev',
-  user: 'root',
-  pass: '123456',
+  user: '*****', // 数据库用户名
+  pass: '******', // 数据库密码
   dir: {
     root,
     log: path.join(__dirname, '..', 'logs'),
